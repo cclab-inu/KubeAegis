@@ -1,0 +1,5 @@
+## Append samples of your project ##
+resources:
+- v1_kubeaegispolicy.yaml
+- v1_policyreport.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

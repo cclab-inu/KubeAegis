@@ -1,0 +1,29 @@
+# This rule is not used by the project kubeaegis itself.
+# It is provided to allow the cluster admin to help manage permissions for users.
+#
+# Grants read-only access to cclab.kubeaegis.com resources.
+# This role is intended for users who need visibility into these resources
+# without permissions to modify them. It is ideal for monitoring purposes and limited-access viewing.
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: kubeaegis
+    app.kubernetes.io/managed-by: kustomize
+  name: kubeaegispolicy-viewer-role
+rules:
+- apiGroups:
+  - cclab.kubeaegis.com
+  resources:
+  - kubeaegispolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cclab.kubeaegis.com
+  resources:
+  - kubeaegispolicies/status
+  verbs:
+  - get
