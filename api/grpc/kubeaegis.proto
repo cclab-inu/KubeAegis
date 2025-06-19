@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package kubeaegis;
+
+option go_package = "github.com/cclab-inu/KubeAegis/api/grpc";
+
+// 서비스 정의
+service PolicyService {
+  // KubeAegis 정책을 어댑터에 전송
+  rpc DispatchPolicy (PolicyRequest) returns (PolicyResponse) {}
+
+  // KubeAegis 정책 삭제를 어댑터에 전송
+  rpc NotifyPolicyDeletion (PolicyDeletionRequest) returns (PolicyDeletionResponse) {}
+}
+
+// 메시지 정의
+message PolicyRequest {
+  string policyName = 1;          // 정책 이름
+  string policyNamespace = 2;     // 정책 네임스페이스
+}
+
+message PolicyResponse {
+  bool success = 1;
+  string message = 2;           // 성공/실패 메시지
+  string adapterPolicyName = 3; // 실제 적용된 정책 이름
+}
+
+message PolicyDeletionRequest {
+  string policyName = 1;          // 정책 이름
+  string policyNamespace = 2;     // 정책 네임스페이스
+  repeated string kspNames = 3;   // 삭제된 KSP 이름 목록
+}
+
+message PolicyDeletionResponse {
+  bool success = 1;
+  string message = 2;             // 성공/실패 메시지
+}

@@ -1,0 +1,7 @@
+- HandleValidateDeny:
+- HandleValidateCEL:
+- HandleValidatePattern:
+- HandleVerifyImage:
+- HandleValidatePodSecurity:
+- HandleMutateAnnotations:
+- HandleMutateLabels:

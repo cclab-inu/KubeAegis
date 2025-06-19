@@ -1,0 +1,12 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: block-cartservice-etc-access
+spec:
+  selector:
+    matchLabels:
+      app: cartservice
+  file:
+    matchPaths:
+      - path: /etc/passwd
+  action: Block

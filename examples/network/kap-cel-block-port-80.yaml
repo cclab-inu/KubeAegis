@@ -1,0 +1,16 @@
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: kap-block-port
+spec:
+  intentRequest:
+    - type: network
+      selector:
+        cel:
+          - labels["app"] == "nginx"
+      rule:
+        action: Block
+        to:
+          - kind: port
+            port: "80"
+            protocol: TCP

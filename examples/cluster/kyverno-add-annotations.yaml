@@ -1,0 +1,20 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-tracing-annotation
+spec:
+  rules:
+  - name:  add-tracing-annotation
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+          selector:
+            matchLabels:
+              app: cartservice
+    mutate:
+      patchStrategicMerge:
+        metadata:
+          annotations:
+            trace.kubeaegis.com/enable: "true"

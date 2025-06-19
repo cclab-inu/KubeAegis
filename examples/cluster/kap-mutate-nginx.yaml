@@ -1,0 +1,21 @@
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: require-nginx-annotation
+spec:
+  intentRequest:
+    - type: cluster
+      selector:
+        match:
+          - kind: Pod
+            scope: any
+            matchLabels:
+              app: nginx
+      rule:
+        action: enforce
+        actionPoint:
+          - subType: mutate
+            resource:
+              - kind: annotations
+                details:
+                  - container.apparmor.security.beta.kubernetes.io/nginx: localhost/kubearmor-default-nginx-port-nginx

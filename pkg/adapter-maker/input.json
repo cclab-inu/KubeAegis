@@ -1,0 +1,13 @@
+{
+    "fieldDescriptions": {
+      "field1": "This is a description for field 1",
+      "field2": "This is a description for field 2",
+      "field3": "This is a description for field 3"
+    },
+    "apiMethods": [
+      {"Name": "API_Method_1", "Description": "This is a description for API Method 1"},
+      {"Name": "API_Method_2", "Description": "This is a description for API Method 2"},
+      {"Name": "API_Method_3", "Description": "This is a description for API Method 3"}
+    ]
+  }
+  

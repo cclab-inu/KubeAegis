@@ -1,0 +1,13 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: frontend-port-block
+spec:
+  endpointSelector:
+    matchLabels:
+      app: frontend
+  egressDeny:
+    - toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP

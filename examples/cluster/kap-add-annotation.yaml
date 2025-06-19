@@ -1,0 +1,22 @@
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: kap-add-annotation
+spec:
+  intentRequest:
+    - type: cluster
+      selector:
+        match:
+          - kind: Pod
+            condition: any
+            namespace: default
+            matchLabels:
+              app: nginx
+      rule:
+        action: enforce
+        actionPoint:
+          - subType: mutate
+            resource:
+              kind: annotations
+              details:
+                  - "trace.kubeaegis.com/enable": "true"

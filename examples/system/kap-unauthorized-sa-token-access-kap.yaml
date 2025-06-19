@@ -1,0 +1,20 @@
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: unauthorized-sa-token-access
+spec:
+  intentRequest:
+    - type: system
+      selector:
+        match:
+        - kind: Pod
+          namespace: default
+          matchLabels:
+              app: nginx
+      rule:
+        action: Block
+        event: 
+          - subType: file
+            resource:
+              dir: 
+                - "/run/secrets/kubernetes.io/serviceaccount/"

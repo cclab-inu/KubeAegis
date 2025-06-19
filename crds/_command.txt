@@ -1,0 +1,26 @@
+# Cilium Network Policy CRD 스키마 가져오기
+kubectl get crd ciliumnetworkpolicies.cilium.io -o json > ./crds/cilium_network_policy_crd.json
+
+# Cilium Cluster Wide Network Policy CRD 스키마 가져오기
+kubectl get crd ciliumclusterwidenetworkpolicies.cilium.io -o json > ./crds/cilium_clusterwide_network_policy_crd.json
+
+# KubeArmorPolicy CRD 스키마 가져오기
+kubectl get crd kubearmorpolicies.security.kubearmor.com -o json >  ./crds/kubearmor_policy_crd.json
+
+# KubeArmorPolicy CRD 스키마 가져오기
+kubectl get crd kubearmorhostpolicies.security.kubearmor.com -o json >  ./crds/kubearmor_host_policy_crd.json
+
+# Calico Network Policy CRD 스키마 가져오기
+kubectl get crd networkpolicies.crd.projectcalico.org -o json > ./crds/calico_network_policy_crd.json
+
+# Cilium Tetragon CRD (Cluster Scope) 스키마 가져오기
+kubectl get crd tracingpolicies.cilium.io -o json > ./crds/tetragon_poliy_crd_cluster.json
+
+# Cilium Tetragon CRD (Namespaces Scope) 스키마 가져오기
+kubectl get crd tracingpoliciesnamespaced.cilium.io -o json > ./crds/tetragon_poliy_crd_namespaced.json
+
+# Kyverno policy 스키마 가져오기
+kubectl get crd policies.kyverno.io -o json > ./crds/kyverno_policy_crd.json
+
+# Kyverno Cluster policy 스키마 가져오기
+kubectl get crd clusterpolicies.kyverno.io -o json > ./crds/kyverno_cluster_policy_crd.json

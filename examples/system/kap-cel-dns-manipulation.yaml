@@ -1,0 +1,18 @@
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: cel-dns-manipulation
+spec:
+  intentRequest:
+    - type: system
+      selector:
+        cel:
+          - labels["app"] == "nginx"
+      rule:
+        action: Block
+        actionPoint: 
+          - subType: file
+            resource: 
+              path:
+                - "/etc/resolv.conf"
+              readOnly: true

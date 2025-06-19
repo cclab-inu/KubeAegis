@@ -6,7 +6,7 @@ domain: cclab.kubeaegis.com
 layout:
 - go.kubebuilder.io/v4
 projectName: kubeaegis
-repo: github.com/cclab-inu/KubeAegis.git
+repo: github.com/cclab-inu/KubeAegis
 resources:
 - api:
     crdVersion: v1
@@ -14,7 +14,7 @@ resources:
   controller: true
   domain: cclab.kubeaegis.com
   kind: KubeAegisPolicy
-  path: github.com/cclab-inu/KubeAegis.git/api/v1
+  path: github.com/cclab-inu/KubeAegis/api/v1
   version: v1
 - api:
     crdVersion: v1
@@ -22,6 +22,6 @@ resources:
   controller: true
   domain: cclab.kubeaegis.com
   kind: PolicyReport
-  path: github.com/cclab-inu/KubeAegis.git/api/v1
+  path: github.com/cclab-inu/KubeAegis/api/v1
   version: v1
 version: "3"

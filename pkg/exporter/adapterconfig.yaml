@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap 
+metadata:
+  name: adapter-config
+  namespace: default  
+data:
+  config: |
+    {
+      "kubeaegis-kubearmor": {
+        "supportedTypes": {
+           "system": ["process", "file", "syscalls"]
+        },
+        "address": "localhost:50051",
+        "status": "offline"
+      },
+      "kubeaegis-cilium": { 
+        "supportedTypes": {
+           "network": ["endpoint", "entities", "port", "cidr"]  
+        },
+        "address": "localhost:50052",
+        "status": "offline"
+      },
+      "kubeaegis-tetragon": {
+        "supportedTypes": {
+          "system": ["kprobe", "tracepoint", "uprobes"] 
+        },
+        "address": "localhost:50053",
+        "status": "offline"
+      },
+      "kubeaegis-kyverno": {
+        "supportedTypes": {
+          "cluster": ["mutate", "validate", "verifyImage"]
+        },
+        "address": "localhost:50054",
+        "status": "offline"
+      }
+    }

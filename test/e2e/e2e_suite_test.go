@@ -25,7 +25,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/cclab-inu/KubeAegis.git/test/utils"
+	"github.com/cclab-inu/KubeAegis/test/utils"
 )
 
 var (

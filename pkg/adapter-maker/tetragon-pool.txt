@@ -1,0 +1,14 @@
+- HandleProcessPattern:
+- SetDefaultValues:
+- HandleFileDirectory:
+- HandleSyscallPath:
+- HandleProcessPath:
+- HandleCapabilities:
+- ConvertContainerSelector:
+- ConvertKprobes:
+- ConvertLists:
+- ConvertPodSelector:
+- ConvertEnforcers:
+- HandleSyscall:
+- HandleProcessDirectory:
+- HandleFilePattern:

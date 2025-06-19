@@ -1,0 +1,12 @@
+go 1.24.4
+
+use (
+	./
+	pkg/adapter/kubeaegis-calico
+	pkg/adapter/kubeaegis-calico-have-rule
+	pkg/adapter/kubeaegis-cilium
+	pkg/adapter/kubeaegis-kubearmor
+	pkg/adapter/kubeaegis-kyverno
+)
+
+replace github.com/cclab-inu/KubeAegis v0.0.1 => .

@@ -32,7 +32,7 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	cclabkubeaegiscomv1 "github.com/cclab-inu/KubeAegis.git/api/v1"
+	cclabkubeaegiscomv1 "github.com/cclab-inu/KubeAegis/api/v1"
 	// +kubebuilder:scaffold:imports
 )
 

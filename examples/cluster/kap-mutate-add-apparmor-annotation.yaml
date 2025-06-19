@@ -1,0 +1,34 @@
+# https://kyverno.io/policies/psp-migration/add-apparmor/add-apparmor/
+
+# apiVersion: kyverno.io/v1
+# kind: ClusterPolicy
+
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: apparmor-runtime-default
+spec:
+  intentRequest:
+    - type: cluster
+      selector:
+        match:
+          - kind: Pod
+            scope: any
+      preconditions:
+        - scope: all
+          key: "{{request.operation || 'BACKGROUND'}}"
+          operator: AnyIn
+          value:
+            - CREATE
+            - UPDATE
+
+      rule:
+        action: enforce
+        actionPoint:
+          - subType: mutate
+            resource:
+              kind: annotations
+              list: 
+                - request.object.spec.containers[]
+              details:
+                - container.apparmor.security.beta.kubernetes.io/{{element.name}}: runtime/default

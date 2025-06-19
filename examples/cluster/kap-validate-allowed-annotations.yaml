@@ -1,0 +1,30 @@
+# https://kyverno.io/policies/other/allowed-annotations/allowed-annotations/
+
+# apiVersion: kyverno.io/v1
+# kind: ClusterPolicy
+
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: allowed-fluxcd-annotations
+spec:
+  intentRequest:
+    - type: cluster
+      selector:
+        match:
+          - kind: Pod
+            scope: any
+      rule:
+        action: enforce
+        actionPoint:
+          - subType: validate
+            deny:
+              - scope: all
+                key:  "{{ request.object.metadata.annotations.keys(@)[?contains(@, 'fluxcd.io/')] }}"
+                operator: AnyIn
+                value:
+                  - "fluxcd.io/cow"
+                  - "fluxcd.io/dog"
+
+
+    

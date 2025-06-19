@@ -27,7 +27,7 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	cclabkubeaegiscomv1 "github.com/cclab-inu/KubeAegis.git/api/v1"
+	cclabkubeaegiscomv1 "github.com/cclab-inu/KubeAegis/api/v1"
 )
 
 var _ = Describe("KubeAegisPolicy Controller", func() {

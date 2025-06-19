@@ -37,8 +37,9 @@ import (
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 
-	cclabkubeaegiscomv1 "github.com/cclab-inu/KubeAegis.git/api/v1"
-	"github.com/cclab-inu/KubeAegis.git/internal/controller"
+	v1 "github.com/cclab-inu/KubeAegis/api/v1"
+	"github.com/cclab-inu/KubeAegis/internal/controller"
+	kyvernov1 "github.com/kyverno/kyverno/api/kyverno/v1"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -50,7 +51,8 @@ var (
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
-	utilruntime.Must(cclabkubeaegiscomv1.AddToScheme(scheme))
+	utilruntime.Must(v1.AddToScheme(scheme))
+	utilruntime.Must(kyvernov1.AddToScheme(scheme))
 	// +kubebuilder:scaffold:scheme
 }
 
@@ -207,13 +209,6 @@ func main() {
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "KubeAegisPolicy")
-		os.Exit(1)
-	}
-	if err = (&controller.PolicyReportReconciler{
-		Client: mgr.GetClient(),
-		Scheme: mgr.GetScheme(),
-	}).SetupWithManager(mgr); err != nil {
-		setupLog.Error(err, "unable to create controller", "controller", "PolicyReport")
 		os.Exit(1)
 	}
 	// +kubebuilder:scaffold:builder

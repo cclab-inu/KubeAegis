@@ -1,0 +1,29 @@
+# https://kyverno.io/policies/other/verify-image/verify-image/
+
+# apiVersion: kyverno.io/v1
+# kind: ClusterPolicy
+
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: verify-image
+spec:
+  intentRequest:
+    - type: cluster
+      selector:
+        match:
+          - kind: Pod
+            scope: any
+      rule:
+        action: enforce
+        actionPoint:
+          - subType: verifyImage
+            resource:
+              - kind: image
+                details:
+                  - "ghcr.io/kyverno/test-verify-image:*"
+                key: |-
+                  -----BEGIN PUBLIC KEY-----
+                    MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8nXRh950IZbRj8Ra/N9sbqOPZrfM
+                    5/KAQN0/KjHcorm/J5yctVd7iEcnessRQjU917hmKO6JWVGHpDguIyakZA==
+                  -----END PUBLIC KEY-----

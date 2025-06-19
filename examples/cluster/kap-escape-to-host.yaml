@@ -1,0 +1,23 @@
+apiVersion: cclab.kubeaegis.com/v1
+kind: KubeAegisPolicy
+metadata:
+  name: kap-block-escape-to-host
+spec:
+  intentRequest:
+    - type: cluster
+      selector:
+        match:
+          - kind: pod
+            condition: any
+            namespace: default
+            matchLabels:
+              app: nginx
+      rule:
+        action: enforce
+        actionPoint:
+          - subType: validate
+            resource:
+              kind: podSecurity
+              details:
+                - level: restricted
+                - version: latest
